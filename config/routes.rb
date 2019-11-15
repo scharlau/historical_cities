@@ -1,0 +1,6 @@
+Rails.application.routes.draw do
+  resources :cities
+# set the root to the main page - later we can add something else
+  root to: 'cities#index'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+end

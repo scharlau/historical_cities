@@ -1,0 +1,62 @@
+<%= form_with(model: city, local: true) do |form| %>
+  <% if city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+        <% city.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Name %>
+    <%= form.text_field :Name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :OtherName %>
+    <%= form.text_field :OtherName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Country %>
+    <%= form.text_field :Country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Latitude %>
+    <%= form.text_field :Latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Longitude %>
+    <%= form.text_field :Longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Certainty %>
+    <%= form.number_field :Certainty %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Year %>
+    <%= form.number_field :Year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Population %>
+    <%= form.number_field :Population %>
+  </div>
+
+  <div class="field">
+    <%= form.label :CityId %>
+    <%= form.number_field :CityId %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
