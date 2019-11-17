@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
   end
 
   def countries
-    @cities = City.countries
+    @cities = City.countries.paginate(page: params[:page])
   end 
 
   # GET /cities/1
