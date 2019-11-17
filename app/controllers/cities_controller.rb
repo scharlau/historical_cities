@@ -7,6 +7,10 @@ class CitiesController < ApplicationController
     @cities = City.paginate(page: params[:page])
   end
 
+  def countries
+    @cities = City.countries
+  end 
+
   # GET /cities/1
   # GET /cities/1.json
   def show

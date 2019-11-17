@@ -1,0 +1,4 @@
+# this will precomile webpack files by running foreman with this command:
+# foreman start -f Procfile.dev
+web: bundle exec puma -C config/puma.rb
+webpacker: ./bin/webpack-dev-server
