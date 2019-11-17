@@ -8,7 +8,7 @@ class City < ApplicationRecord
     end
 
     def self.countries
-        City.group(:Country)
+        City.all.group(:Country)
     end
 
 end
