@@ -1,7 +1,7 @@
 class City < ApplicationRecord
     def self.search(term)
         if term
-          where('name LIKE ?', "%#{term}%")
+          where('name LIKE ?', "%#{term}%").order(:year)
         else
           all
         end

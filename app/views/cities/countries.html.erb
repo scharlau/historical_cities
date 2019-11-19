@@ -2,39 +2,7 @@
 
 <h1>Cities ordered by Country</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Othername</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Certainty</th>
-      <th>Year</th>
-      <th>Population</th>
-      <th>Cityid</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.Name %></td>
-        <td><%= city.OtherName %></td>
-        <td><%= city.Country %></td>
-        <td><%= city.Latitude %></td>
-        <td><%= city.Longitude %></td>
-        <td><%= city.Certainty %></td>
-        <td><%= city.Year %></td>
-        <td><%= city.Population %></td>
-        <td><%= city.CityId %></td>
-        <td><%= link_to 'Show', city %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <%= render "core" %>
 
 <br>
 <%= will_paginate @posts %>

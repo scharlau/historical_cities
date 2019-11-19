@@ -45,5 +45,7 @@
   <%= @city.CityId %>
 </p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>
+
+<h3>The other occurances of the city are these:</h3>
+ <%= render "core" %>
