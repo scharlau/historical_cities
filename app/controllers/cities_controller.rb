@@ -15,7 +15,7 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
-    @cities = City.search(@city.Name).paginate(page: params[:page])
+    @cities = City.search(@city.name).paginate(page: params[:page])
   end
 
   # GET /cities/new
@@ -75,6 +75,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:Name, :OtherName, :Country, :Latitude, :Longitude, :Certainty, :Year, :Population, :CityId)
+      params.require(:city).permit(:name, :otherName, :country, :latitude, :longitude, :certainty, :year, :population, :cityId)
     end
 end

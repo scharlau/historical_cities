@@ -1,14 +1,14 @@
 class City < ApplicationRecord
     def self.search(term)
         if term
-          where('cities.Name LIKE ?', "%#{term}%").order(:year)
+          where('cities.name LIKE ?', "%#{term}%").order(:year)
         else
           all
         end
     end
 
     def self.countries
-        City.order(:Country)
+        City.order(:country)
     end
 
 end

@@ -16,15 +16,15 @@ namespace :cities do
       row_cells = row.values
       #puts "row cells: " + row_cells.to_s
       City.create!(
-      Name: row_cells[1],
-      OtherName: row_cells[2],
-      Country: row_cells[3],
-      Latitude: row_cells[4],
-      Longitude: row_cells[5],
-      Certainty: row_cells[6],
-      Year: row_cells[7],
-      Population: row_cells[8],
-      CityId: row_cells[9]
+      name: row_cells[1],
+      otherName: row_cells[2],
+      country: row_cells[3],
+      latitude: row_cells[4],
+      longitude: row_cells[5],
+      certainty: row_cells[6],
+      year: row_cells[7],
+      population: row_cells[8],
+      cityId: row_cells[9]
       )
       
     end
@@ -49,15 +49,15 @@ namespace :cities do
       row_cells = row.values
       #puts "row cells: " + row_cells.to_s
       City.create!(
-      Name: row_cells[1],
-      OtherName: row_cells[2],
-      Country: row_cells[3],
-      Latitude: row_cells[4],
-      Longitude: row_cells[5],
-      Certainty: row_cells[6],
-      Year: row_cells[7],
-      Population: row_cells[8],
-      CityId: row_cells[9]
+      name: row_cells[1],
+      otherName: row_cells[2],
+      country: row_cells[3],
+      latitude: row_cells[4],
+      longitude: row_cells[5],
+      certainty: row_cells[6],
+      year: row_cells[7],
+      population: row_cells[8],
+      cityId: row_cells[9]
       )
       
     end

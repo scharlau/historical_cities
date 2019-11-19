@@ -18,15 +18,15 @@
   <tbody>
     <% @cities.each do |city| %>
       <tr>
-        <td><%= city.Name %></td>
-        <td><%= city.OtherName %></td>
-        <td><%= city.Country %></td>
-        <td><%= city.Latitude %></td>
-        <td><%= city.Longitude %></td>
-        <td><%= city.Certainty %></td>
-        <td><%= city.Year %></td>
-        <td><%= city.Population %></td>
-        <td><%= city.CityId %></td>
+        <td><%= city.name %></td>
+        <td><%= city.otherName %></td>
+        <td><%= city.country %></td>
+        <td><%= city.latitude %></td>
+        <td><%= city.longitude %></td>
+        <td><%= city.certainty %></td>
+        <td><%= city.year %></td>
+        <td><%= city.population %></td>
+        <td><%= city.cityId %></td>
         <td><%= link_to 'Show', city %></td>
       </tr>
     <% end %>
