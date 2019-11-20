@@ -6,6 +6,11 @@ You'll find the current version of the app running on Heroku at http://fathomles
 
 We'll use Webpack with Bootstrap following this guide on Medium https://medium.com/@guilhermepejon/how-to-install-bootstrap-4-3-in-a-rails-6-app-using-webpack-9eae7a6e2832 so that the pages look better and we have a working example to style things a little bit by working through bootstrap basics at https://getbootstrap.com/docs/4.3/getting-started/introduction/ to remove tables and add other suitable styling.rail
 
+Highcharts are used for generating charts
+see instructions at bottom of the page at
+https://homepages.abdn.ac.uk/b.scharlau/pages/practical-three-adding-models-to-the-travel-agent/ 
+
+
 The goal is to explore how we might use this dataset to develop increasingly better versions of a web application. There are 10300+ records in the dataset.
 For all of these we use the 'will_paginate' gem at https://github.com/mislav/will_paginate for pagination.
 
