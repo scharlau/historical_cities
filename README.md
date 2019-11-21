@@ -10,6 +10,7 @@ Highcharts are used for generating charts
 see instructions at bottom of the page at
 https://homepages.abdn.ac.uk/b.scharlau/pages/practical-three-adding-models-to-the-travel-agent/ 
 
+Putting the formatting together for the chart of populations was more challenging than expected, and ended up with simplier solution than expected. Given we want to put different dates and populations on the chart it's best to treat the years as 'categories' for Highcharts, the same as apples, oranges, and pears. This lets us pass in any array of values without any trouble.
 
 The goal is to explore how we might use this dataset to develop increasingly better versions of a web application. There are 10300+ records in the dataset.
 For all of these we use the 'will_paginate' gem at https://github.com/mislav/will_paginate for pagination.

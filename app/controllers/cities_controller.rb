@@ -14,8 +14,17 @@ class CitiesController < ApplicationController
 
   # GET /cities/1
   # GET /cities/1.json
+  # retrieve city and its other instances to populate a chart of its population
   def show
     @cities = City.search(@city.name).paginate(page: params[:page])
+    @years = []
+    @population = []
+    @cities.each do |city|
+      @years << city.year
+      @population << city.population
+
+    end
+    @cities.paginate(page: params[:page])
   end
 
   # GET /cities/new
