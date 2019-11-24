@@ -9,6 +9,7 @@
     "bootstrap": "4.3.1",
     "highcharts": "^7.2.1",
     "jquery": "^3.4.1",
+    "leaflet": "^1.6.0",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0"
   },

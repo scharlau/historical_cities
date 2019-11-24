@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<p><%= link_to 'Back', cities_path %></p>
 <p>
   <strong>Name:</strong>
   <%= @city.name %>
@@ -45,7 +45,21 @@
   <%= @city.cityId %>
 </p>
 
-<%= link_to 'Back', cities_path %>
+<div id="mapid"></div>
+<script type = "text/javascript">
+var mymap = L.map('mapid').setView([<%= @city.latitude %>, <%= @city.longitude %>], 13);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1Ijoic2NoYXJsYXUiLCJhIjoiY2szYnVuOWxnMDl4bDNmdWlhNGxtdHFwNCJ9.AscLdeuE02X-3W7Mtvos8A '
+}).addTo(mymap);
+var marker = L.marker([<%= @city.latitude %>, <%= @city.longitude %>]).addTo(mymap);
+
+
+
+</script>
+
 <p>Refresh the page if at first the chart doesn't appear below.</p>
 
 <div id="container" style="width:100%; height:400px"></div>
