@@ -22,6 +22,10 @@ Putting the formatting together for the chart of populations was more challengin
 ## Maps
 This uses Leaflet for mapping https://leafletjs.com as it's lightweight and there are no licence issues to worry about as it's built on top of Open Street Map. This proven a pain using yarn and npm for install, and needed to move images to sit under javascript/stylesheets/images, which is not where I expected. Basics are there, but issue with map icons being called from leaflet CSS.
 
+Leaflet did not work with Webpacker. All leaflet files needed to be removed and the 'unpkg.com' solution used as mentioned in the 'quick start tutorial. While map tiles could be displayed, Webpacker added an extra few characters to the url so it ended up as .png%22 for the CSS icons. By using the online versions, it all works.
+
+You can change map provider via details at http://leaflet-extras.github.io/leaflet-providers/preview/ 
+
 
 #Version 1
 Everything goes into one table, which we can manipulate accordinly to show us interesting visualisations.
