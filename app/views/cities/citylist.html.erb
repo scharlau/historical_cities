@@ -15,7 +15,8 @@
     <% @cities.each do |city| %>
       <tr>
         <td><%= city.name %></td>
-        
+         <td><%= city.year %></td>
+         <td><%= city.population %></td>
     
         
       </tr>
@@ -24,5 +25,5 @@
 </table>
 
 <br>
-<%= will_paginate @posts %>
+
 

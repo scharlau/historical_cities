@@ -12,7 +12,7 @@ class City < ApplicationRecord
     end
 
     def self.citylist
-      City.select("SELECT DISTINCT ON (name) * FROM public.cities ORDER BY (name) ASC")
+      City.find_by_sql("SELECT * FROM (SELECT DISTINCT ON (name) * from public.cities ORDER By (name)) t ORDER by (year)")
     end
 
 end

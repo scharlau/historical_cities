@@ -34,6 +34,11 @@ You can change map provider via details at http://leaflet-extras.github.io/leafl
 
 ## Racing Barchart Experiment
 The goal is to create a racing barchart showing the rise and fall of city populations over time. There is done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible.
+
+### Move to Postgresql Locally
+Due to SQL language differences between SQLite3 and Postgresql it became necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so locally running Herokue is important.
+In order to do this, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with pg locally and remotely.
+
 1. Query the database to generate list of each city
 2. Query cities by range of dates
 
