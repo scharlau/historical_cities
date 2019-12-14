@@ -12,7 +12,7 @@ class City < ApplicationRecord
     end
 
     def self.citylist
-      City.select("DISTINCT (name) ORDER BY (name) ASC")
+      City.select("SELECT DISTINCT ON (name) * FROM public.cities ORDER BY (name) ASC")
     end
 
 end
