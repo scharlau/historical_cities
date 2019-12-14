@@ -32,6 +32,11 @@ Leaflet did not work with Webpacker. All leaflet files needed to be removed and 
 
 You can change map provider via details at http://leaflet-extras.github.io/leaflet-providers/preview/ 
 
+## Racing Barchart Experiment
+The goal is to create a racing barchart showing the rise and fall of city populations over time. There is done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible.
+1. Query the database to generate list of each city
+2. Query cities by range of dates
+
 #Version 1 - The One Table Version
 Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city.
 

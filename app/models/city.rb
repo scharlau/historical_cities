@@ -11,4 +11,8 @@ class City < ApplicationRecord
         City.order(:country)
     end
 
+    def self.citylist
+      City.select("DISTINCT (name) ORDER BY (name) ASC")
+    end
+
 end

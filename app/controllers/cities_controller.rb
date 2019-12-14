@@ -12,6 +12,10 @@ class CitiesController < ApplicationController
     @cities = City.countries.paginate(page: params[:page])
   end 
 
+  def citylist
+    @cities = City.citylist.paginate(page: params[:page])
+  end
+
   # GET /cities/1
   # GET /cities/1.json
   # retrieve city and its other instances to populate a chart of its population
