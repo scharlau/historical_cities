@@ -10,6 +10,7 @@ require("channels")
   
 import '../stylesheets/application'
 import './bootstrap_custom.js'
+import './bar_chart_race.js'
 
 import Highcharts from 'highcharts'
 window.Highcharts = Highcharts

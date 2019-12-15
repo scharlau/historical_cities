@@ -5,6 +5,7 @@ environment.plugins.append(
   'Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
+    BarChartRace: 'barchart_race.js',
     jQuery: 'jquery',
     leaflet: 'leaflet',
     Popper: ['popper.js', 'default']

@@ -39,8 +39,12 @@ The goal is to create a racing barchart showing the rise and fall of city popula
 Due to SQL language differences between SQLite3 and Postgresql it became necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so locally running Herokue is important.
 In order to do this, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with pg locally and remotely.
 
+### Build JSON File with Rake
+The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
+
 1. Query the database to generate list of each city
 2. Query cities by range of dates
+Use [Bar chart race](https://github.com/vicrazumov/bar-chart-race) as first attempt as it looks like can use by formatting query to JSON to feed to the visualisation.
 
 #Version 1 - The One Table Version
 Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city.

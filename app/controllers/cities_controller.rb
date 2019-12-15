@@ -14,6 +14,8 @@ class CitiesController < ApplicationController
 
   def citylist
     @cities = City.citylist
+   
+    
   end
 
   # GET /cities/1

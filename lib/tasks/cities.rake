@@ -1,6 +1,6 @@
 require 'creek'
 namespace :cities do
-  desc "pase cities to database as one table"
+  desc "parse cities to database as one table"
   task seed_basic_cities: :environment do
 
     #destroy the old table data before importing the new one
@@ -33,7 +33,7 @@ namespace :cities do
 
   # heroku has a limit of 10k records so 
   # we'll modify this method and spreadsheet to stay within limit
-  desc "pase cities for heroku"
+  desc "parse cities for heroku"
   task seed_heroku: :environment do
 
     #destroy the old table data before importing the new one
@@ -61,6 +61,60 @@ namespace :cities do
       )
       
     end
+
+  end
+
+  #task to generate JSON file for use in bar chart race
+  desc "create JSON file to use in bar chart race"
+  task barchart_json: :environment do
+    years = City.select(:year).distinct
+    years_count = 0
+    years_size = years.size
+    
+    file_folder = Rails.root.join('app','javascript')
+    # File.open(file_folder.join("barchartcities.json"),mode ="r") do |f1|
+
+    #   puts "barchartcities: "
+    #   while line = f1.gets
+    #     puts line
+    #   end
+    # end
+    #
+    #  need to add counter for the loops to add comma after each loop, 
+    #  but not on the last one
+    File.open(file_folder.join("barchartcities.json"),"w") do |f2|
+      puts "opened file to write"
+      f2.write "["
+      years.each do |year|
+        f2.write "{\"year\":"
+        this_year = year.year
+        f2.write this_year 
+        f2.write ",\"entries\":[" 
+        # gather up cities and populations for this year
+        city_year = City.where('year = ?', "#{year.year}")
+        cy_count = 0
+        cy_size = city_year.size
+        city_year.each do |cy|
+          f2.write "{\"name\": #{cy.name}\", \"population\":\"#{cy.population}\"}"
+          cy_count = cy_count+1
+          if cy_count == cy_size
+            f2.write " "
+          else
+          f2.write ","
+          end
+        end
+        years_count = years_count+1
+        if years_count == years_size
+          f2.write "]}"
+        else
+        f2.write "]},"
+        end
+      end
+      
+      f2.write"]"
+      puts "closing file"
+    end
+ 
 
   end
 
