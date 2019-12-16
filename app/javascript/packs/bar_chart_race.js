@@ -242,3 +242,5 @@ class BarChartRace {
     requestAnimationFrame(this._tick.bind(this));
   }
 }
+
+export default BarChartRace;

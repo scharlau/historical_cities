@@ -71,7 +71,7 @@ namespace :cities do
     years_count = 0
     years_size = years.size
     
-    file_folder = Rails.root.join('app','javascript')
+    file_folder = Rails.root.join('public')
     # File.open(file_folder.join("barchartcities.json"),mode ="r") do |f1|
 
     #   puts "barchartcities: "
@@ -95,7 +95,7 @@ namespace :cities do
         cy_count = 0
         cy_size = city_year.size
         city_year.each do |cy|
-          f2.write "{\"name\": #{cy.name}\", \"population\":\"#{cy.population}\"}"
+          f2.write "{\"name\": \"#{cy.name}\", \"population\":\"#{cy.population}\"}"
           cy_count = cy_count+1
           if cy_count == cy_size
             f2.write " "
