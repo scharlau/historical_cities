@@ -41,13 +41,14 @@ In order to do this, you need to (a) set up a database to use, (b) assign an 'ow
 
 ### Build JSON File with Rake
 The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
+TODO - sort JSON file by year from oldest to newest, as currently unordered.
 
 1. Query the database to generate list of each city
 2. Query cities by range of dates
 Use [Bar chart race](https://github.com/vicrazumov/bar-chart-race) as first attempt as it looks like can use by formatting query to JSON to feed to the visualisation.
 3. Adding in the javascript meant learning more about Webpack and where files need to be located. Plenty to learn:
     * JSON should go under 'public' folder to be available to the app
-    * [Adding custon JS details](https://dev.to/morinoko/adding-custom-javascript-in-rails-6-1ke6) clarifies where and how you load JS under Webpack
+    * [Adding custon JS details](https://dev.to/morinoko/adding-custom-javascript-in-rails-6-1ke6) clarifies where and how you load JS under Webpack, and how to import and reference your JS objects too.
     * Use Chrome to debug your JS errors - remember to clear your cache as you go along so that you see the effect of changes. 
     * Follow these instructions to [activate apache2 server on your Mac](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps) so that you can run a server to test the pages without Rails to see that everything works as it should. It did, with minor change to remove '/' from fetch command for JSON then worked in both Safari and Chrome after caches were cleared.
     * Knowing it works, means we can now work on details of doing this with Rails and Ruby.

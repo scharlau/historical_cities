@@ -65,9 +65,17 @@ namespace :cities do
   end
 
   #task to generate JSON file for use in bar chart race
+  # we get objects, but just need year in an array, and then want 
+  # it in order by years.
   desc "create JSON file to use in bar chart race"
   task barchart_json: :environment do
-    years = City.select(:year).distinct
+    start_years = City.select(:year).distinct
+    start_years = start_years.to_ary
+    years = []
+    start_years.each do |y|
+       years << y.year
+    end
+    years.sort!
     years_count = 0
     years_size = years.size
     
@@ -87,18 +95,18 @@ namespace :cities do
       f2.write "["
       years.each do |year|
         f2.write "{\"year\":"
-        this_year = year.year
+        this_year = year
         f2.write this_year 
         f2.write ",\"entries\":[" 
         # gather up cities and populations for this year
-        city_year = City.where('year = ?', "#{year.year}")
+        city_year = City.where('year = ?', "#{year}")
         cy_count = 0
         cy_size = city_year.size
         city_year.each do |cy|
-          f2.write "{\"name\": \"#{cy.name}\", \"population\":\"#{cy.population}\"}"
+          f2.write "{\"name\":\"#{cy.name}\", \"value\":\"#{cy.population}\"}"
           cy_count = cy_count+1
           if cy_count == cy_size
-            f2.write " "
+            f2.write ""
           else
           f2.write ","
           end

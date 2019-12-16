@@ -1,4 +1,5 @@
 <script language="JavaScript" type="text/javascript">
+ 
 fetch('barchartcities.json').then(response => response.json()).then(data => {
   const container = document.querySelector('#container');
   const stats = new BarChartRace(container, data);
