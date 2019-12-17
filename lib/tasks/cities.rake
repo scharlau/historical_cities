@@ -103,7 +103,7 @@ namespace :cities do
         cy_count = 0
         cy_size = city_year.size
         city_year.each do |cy|
-          f2.write "{\"name\":\"#{cy.name}\", \"value\":\"#{cy.population}\"}"
+          f2.write "{\"name\":\"#{cy.name}\", \"value\":#{cy.population}}"
           cy_count = cy_count+1
           if cy_count == cy_size
             f2.write ""
