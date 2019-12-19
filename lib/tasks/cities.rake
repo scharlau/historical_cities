@@ -67,6 +67,10 @@ namespace :cities do
   #task to generate JSON file for use in bar chart race
   # we get objects, but just need year in an array, and then want 
   # it in order by years.
+
+  # need to find only years with 5 or more cities in them and skip others.
+  # need to gather these first, and then print to file with two loops
+  
   desc "create JSON file to use in bar chart race"
   task barchart_json: :environment do
     start_years = City.select(:year).distinct
@@ -88,7 +92,7 @@ namespace :cities do
     #   end
     # end
     #
-    #  need to add counter for the loops to add comma after each loop, 
+    #  need a ounter for the loops to add comma after each loop, 
     #  but not on the last one
     File.open(file_folder.join("barchartcities.json"),"w") do |f2|
       puts "opened file to write"
@@ -102,22 +106,26 @@ namespace :cities do
         city_year = City.where('year = ?', "#{year}")
         cy_count = 0
         cy_size = city_year.size
-        city_year.each do |cy|
-          f2.write "{\"name\":\"#{cy.name}\", \"value\":#{cy.population}}"
-          cy_count = cy_count+1
-          if cy_count == cy_size
-            f2.write ""
-          else
-          f2.write ","
+        
+        
+
+          city_year.each do |cy|
+            f2.write "{\"name\":\"#{cy.name}\", \"value\":#{cy.population}}"
+            cy_count = cy_count+1
+            if cy_count == cy_size
+              f2.write ""
+            else
+            f2.write ","
+            end
           end
-        end
-        years_count = years_count+1
-        if years_count == years_size
-          f2.write "]}"
-        else
-        f2.write "]},"
-        end
-      end
+          years_count = years_count+1
+          if years_count == years_size
+            f2.write "]}"
+          else
+          f2.write "]},"
+          end
+      end 
+     
       
       f2.write"]"
       puts "closing file"

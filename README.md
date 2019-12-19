@@ -33,15 +33,16 @@ Leaflet did not work with Webpacker. All leaflet files needed to be removed and 
 You can change map provider via details at http://leaflet-extras.github.io/leaflet-providers/preview/ 
 
 ## Racing Barchart Experiment
-The goal is to create a racing barchart showing the rise and fall of city populations over time. There is done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible.
+The goal is to create a racing barchart showing the rise and fall of city populations over time. There is might be done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible. This makes it clear the data needs to be in the right format in order for this work. 
 
 ### Move to Postgresql Locally
-Due to SQL language differences between SQLite3 and Postgresql it became necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so locally running Herokue is important.
-In order to do this, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with pg locally and remotely.
+While generating JSON the SQL language differences between SQLite3 and Postgresql made it necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so locally running Herokue is important.
+In order to do this with Postgresql, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with pg locally and remotely.
 
 ### Build JSON File with Rake
 The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
-TODO - sort JSON file by year from oldest to newest, as currently unordered.
+
+The cities appear currently, but only one at a time. The next step is to strip out years with only one city to see if, for example, when there are five, that we then have the bar charts appear correctly.
 
 1. Query the database to generate list of each city
 2. Query cities by range of dates
