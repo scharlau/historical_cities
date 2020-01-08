@@ -76,28 +76,30 @@ namespace :cities do
     start_years = City.select(:year).distinct
     start_years = start_years.to_ary
     years = []
+    years_5 = []
     start_years.each do |y|
        years << y.year
     end
     years.sort!
-    years_count = 0
-    years_size = years.size
-    
-    file_folder = Rails.root.join('public')
-    # File.open(file_folder.join("barchartcities.json"),mode ="r") do |f1|
 
-    #   puts "barchartcities: "
-    #   while line = f1.gets
-    #     puts line
-    #   end
-    # end
-    #
+    years.each do |year|
+      city_year = City.where('year = ?', "#{year}")
+      if city_year.size > 4
+        years_5 << year
+      end
+    end
+    years_count = 0
+    years_size = years_5.size
+    
+        
+    file_folder = Rails.root.join('public')
+  
     #  need a ounter for the loops to add comma after each loop, 
     #  but not on the last one
     File.open(file_folder.join("barchartcities.json"),"w") do |f2|
       puts "opened file to write"
       f2.write "["
-      years.each do |year|
+      years_5.each do |year|
         f2.write "{\"year\":"
         this_year = year
         f2.write this_year 
