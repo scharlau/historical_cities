@@ -32,7 +32,7 @@ Leaflet did not work with Webpacker. All leaflet files needed to be removed and 
 You can change map provider via details at http://leaflet-extras.github.io/leaflet-providers/preview/ 
 
 ## Racing Barchart Experiment
-The goal is to create a racing barchart showing the rise and fall of city populations over time. There is might be done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible. This makes it clear the data needs to be in the right format in order for this work. 
+The goal is to create a racing barchart showing the rise and fall of city populations over time. There are lots of examples that use the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). This makes it clear the data needs to be in the right format in order for this work. This led to an exploration of 'what should the data look like'? I realised that I needed to generate my own JSON file, and that Flourish wasn't necessary.
 
 ### Move to Postgresql Locally
 While generating JSON the SQL language differences between SQLite3 and Postgresql made it necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so running Postgresql locally is important.
@@ -45,13 +45,15 @@ https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-
 
 I found these next two links were useful in resolving an error as they offered the steps and commands to use to fix the error:
 https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge# 
+
 https://www.godaddy.com/garage/how-to-install-postgresql-on-ubuntu-14-04/ 
 
 ### Build JSON File with Rake
-The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
+The bar chart race needs the data in a JSON file (public/barchartcities.json). As this data only needs some of the values for each city (name, year and population), and we don't want to generate the JSON each time the page runs, it makes sense to create it via Rake so that it can be called as needed. This was done by testing queries in Postgresql's PgAdmin tool to confirm the query works correctly, and then translating this to a Rails query for use in the rake file (lib/task/cities.rake). In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
 
-The cities appear currently, but only one at a time. After creating a JSON file with only years that have 5 or more cities, then it works. After adjusting some of the constants in the JS file it now looks better.
+The cities appeared first, but only one at a time. After creating a JSON file with only years that have 5 or more cities, then it works as a race. After adjusting some of the constants in the JS file it now looks better. There are still labelling and size issues, but this is minor.
 
+**This is what was done to make it work:**
 1. Query the database to generate list of each city
 2. Query cities by range of dates
 Use [Bar chart race](https://github.com/vicrazumov/bar-chart-race) as first attempt as it looks like can use by formatting query to JSON to feed to the visualisation.
