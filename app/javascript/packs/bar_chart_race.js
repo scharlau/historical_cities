@@ -15,9 +15,10 @@ function numberOrZero(num) {
   return Number.isNaN(int) ? 0 : int;
 }
 
-const ICON_SIZE = 32;
-const RIGHT_FIELD_MARGIN = 0.2;
-const HEADER_SIZE = 40;
+// originally, 32, 0.2, 40
+const ICON_SIZE = 20;
+const RIGHT_FIELD_MARGIN = 0.5;
+const HEADER_SIZE = 30;
 
 // assuming performance of 60 FPS, 60 FRAMES_PER_PERIOD equals to 1 sec per period
 // TODO: adjust pace to actual FPS

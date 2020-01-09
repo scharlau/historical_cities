@@ -42,7 +42,7 @@ In order to do this with Postgresql, you need to (a) set up a database to use, (
 ### Build JSON File with Rake
 The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
 
-The cities appear currently, but only one at a time. The next step is to strip out years with only one city to see if, for example, when there are five, that we then have the bar charts appear correctly.
+The cities appear currently, but only one at a time. After creating a JSON file with only years that have 5 or more cities, then it works. After adjusting some of the constants in the JS file it now looks better.
 
 1. Query the database to generate list of each city
 2. Query cities by range of dates

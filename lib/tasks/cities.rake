@@ -81,7 +81,7 @@ namespace :cities do
        years << y.year
     end
     years.sort!
-
+    # gather only those years with 5 or more cities
     years.each do |year|
       city_year = City.where('year = ?', "#{year}")
       if city_year.size > 4
@@ -90,11 +90,10 @@ namespace :cities do
     end
     years_count = 0
     years_size = years_5.size
-    
         
     file_folder = Rails.root.join('public')
   
-    #  need a ounter for the loops to add comma after each loop, 
+    #  need a counter for the loops to add comma after each loop, 
     #  but not on the last one
     File.open(file_folder.join("barchartcities.json"),"w") do |f2|
       puts "opened file to write"
@@ -108,10 +107,7 @@ namespace :cities do
         city_year = City.where('year = ?', "#{year}")
         cy_count = 0
         cy_size = city_year.size
-        
-        
-
-          city_year.each do |cy|
+        city_year.each do |cy|
             f2.write "{\"name\":\"#{cy.name}\", \"value\":#{cy.population}}"
             cy_count = cy_count+1
             if cy_count == cy_size
@@ -128,12 +124,10 @@ namespace :cities do
           end
       end 
      
-      
       f2.write"]"
       puts "closing file"
     end
  
-
   end
 
 end
