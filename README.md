@@ -22,7 +22,6 @@ For all of these we use the 'will_paginate' gem at https://github.com/mislav/wil
 Highcharts are used for generating charts
 see instructions at bottom of the page at
 https://homepages.abdn.ac.uk/b.scharlau/pages/practical-three-adding-models-to-the-travel-agent/ 
-
 Putting the formatting together to work for the chart of populations was more challenging than expected. Webpacker worked fine. The challenge was how to do 'dates' or 'years', and ended up with a simplier solution than expected. Given we want to put different dates and populations on the chart it's best to treat the years as 'categories' for Highcharts, the same as apples, oranges, and pears. This lets us pass in any array of values without any trouble.
 
 ## Maps
@@ -36,8 +35,17 @@ You can change map provider via details at http://leaflet-extras.github.io/leafl
 The goal is to create a racing barchart showing the rise and fall of city populations over time. There is might be done using the [Flourish bar chart race guide](https://app.flourish.studio/@flourish/bar-chart-race#guide). Making this work will require a number of steps to be performed in order to make it possible. This makes it clear the data needs to be in the right format in order for this work. 
 
 ### Move to Postgresql Locally
-While generating JSON the SQL language differences between SQLite3 and Postgresql made it necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so locally running Herokue is important.
-In order to do this with Postgresql, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with pg locally and remotely.
+While generating JSON the SQL language differences between SQLite3 and Postgresql made it necessary to shift local development to Postgresql. Making changes, and then pushing them to Heroku takes too long (4-5 minutes each cycle due to recompiling of assets), so running Postgresql locally is important.
+In order to do this with Postgresql, you need to (a) set up a database to use, (b) assign an 'owner' and password for the database, whose details you put into the config/database.yml file, then you can (c) run your migrations and any rake tasks to seed the database, (d) change the gemfile to use 'pg' gem for development, test, and production and then run 'bundle install'. Now you can start to work with Postgresql locally and remotely. 
+
+If you're new to Postgresql, then these links should help you:
+Remember to use \q to exit psqlps
+https://wiki.postgresql.org/wiki/First_steps 
+https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-postgresql/ 
+
+I found these next two links were useful in resolving an error as they offered the steps and commands to use to fix the error:
+https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge# 
+https://www.godaddy.com/garage/how-to-install-postgresql-on-ubuntu-14-04/ 
 
 ### Build JSON File with Rake
 The bar chart race needs the data in a JSON file. As this data only needs some of the values for each city (name, year and population), and we don't want to have to generate this each time the page runs, it makes sense to create it via Rake so that it can be called as needed, and is in the right format. This was done by testing queries in PgAdmin to confirm the query works correctly, and then translating this to a Rails query in the model, or rake file. In addition, it was a matter of manipulating other queries, and looping through the results to print out the required values for the JSON file.
