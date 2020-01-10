@@ -64,8 +64,8 @@ Use [Bar chart race](https://github.com/vicrazumov/bar-chart-race) as first atte
     * Follow these instructions to [activate apache2 server on your Mac](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps) so that you can run a server to test the pages without Rails to see that everything works as it should. It did, with minor change to remove '/' from fetch command for JSON then worked in both Safari and Chrome after caches were cleared.
     * Knowing it works, means we can now work on details of doing this with Rails and Ruby.
 
-# Version 1 - The One Table Version
-Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city.
+## Version 1 - The One Table Version - No Styling - Branch Basic
+Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city. Bootstrap is put in place, but not used. This is the basic branch with no styling added.
 
 
 
