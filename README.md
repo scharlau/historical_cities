@@ -3,10 +3,10 @@
 This is a Ruby on Rails app based on the Urban Spatial Data from 3700BC to 2000AD found at https://sedac.ciesin.columbia.edu/data/set/urbanspatial-hist-urban-pop-3700bc-ad2000 The spreadsheet needed to be imported into the app, and https://spin.atomicobject.com/2017/03/22/parsing-excel-files-ruby/ provides a comparative guide to parsing Excel files with different gems. This uses the Creek gem to import the spreadsheet using rake. https://github.com/pythonicrubyist/creek as it provides fast importing of large datasets.
 
 ## See me running
-You'll find the current 'ugly duckling' version of the app running on Heroku at http://fathomless-scrubland-43773.herokuapp.com Given the restrictions there this will be a reduced dataset to stay under 10k records in the database. One noticable difference in working so closely with Postgresql on this app, is that PG is much fussier about queries than sqlite3, which is being run locally. In particular, the table column names needed to be changed as they all start with capitals, which is not allowed in PG. This rendered some queries impossible.
+You'll find the current version of the app running on Heroku at http://fathomless-scrubland-43773.herokuapp.com Given the restrictions there this will be a reduced dataset to stay under 10k records in the database. One noticable difference in working so closely with Postgresql on this app, is that PG is much fussier about queries than sqlite3, which is being run locally. In particular, the table column names needed to be changed as they all start with capitals, which is not allowed in PG. This rendered some queries impossible.
 
 ## Rails 6
-This project is also a chance to explore Rails 6, and it's changes. There will be notes here about what's working and which guides have been useful for me and this project. 
+This project is also a chance to explore Rails 6, and it's changes. There will be notes here about what's working and which guides have been useful for me and this project. This will become part of the course I teach on Ruby and Rails at the University of Aberdeen. The practicals and 'deliberate practice' sessions can be found at https://homepages.abdn.ac.uk/b.scharlau/pages/rails-pages/ 
 
 These guides to Rails 6 seems to have some useful pointers
 https://dev.to/vvo/a-rails-6-setup-guide-for-2019-and-2020-hf5 
@@ -73,7 +73,10 @@ https://getbootstrap.com/docs/4.3/getting-started/introduction/ which is the boo
 https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/ looks like it will help cover the different issues.
 https://www.w3schools.com/bootstrap4/default.asp looks to be similar to the one above, but provides an alterative.
 
-The goal is to have a responsive application, which removes tables where possible, and maintains a high contrast layout, which will be adaptable as we move forward with this project.
+The goal is to have a responsive application, which removes tables where possible, and maintains a high contrast layout, which will be adaptable as we move forward with this project. This will not dive into editing the bootstrap files themselves. This will focus on using available css classes within bootstrap.
+
+1. Fix banner and navigation with edits to app/view/layouts/_menu.html.erb to use bootstrap. 
+2. Makes changes to table layouts with edits to the files under app/view/cities. Using 'cycle' tag in Rails enables alternate colours on rows, and tables are swapped for grid components of rows and colums.
 
 
 

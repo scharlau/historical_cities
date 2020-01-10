@@ -1,38 +1,28 @@
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Othername</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Certainty</th>
-      <th>Year</th>
-      <th>Population</th>
-      <th>Cityid</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+<div class="container">
+    <div class="row">
+      <div class="col">Name</div>
+      <div class="col">Othername</div>
+      <div class="col">Country</div>
+      <div class="col">Certainty</div>
+      <div class="col">Year</div>
+      <div class="col">Population</div>
+      <div class="col">Cityid</div>
+      <div class="col"></div>
+    </div>
 
-  <tbody>
     <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= city.otherName %></td>
-        <td><%= city.country %></td>
-        <td><%= city.latitude %></td>
-        <td><%= city.longitude %></td>
-        <td><%= city.certainty %></td>
-        <td><%= city.year %></td>
-        <td><%= city.population %></td>
-        <td><%= city.cityId %></td>
-        <td><%= link_to 'Show', city %></td>
-      </tr>
+      <div class="row <%= cycle('list-group-item-light', 'list-group-item-info') %>">
+        <div class="col"><%= city.name %></div>
+        <div class="col"><%= city.otherName %></div>
+        <div class="col"><%= city.country %></div>
+        <div class="col"><%= city.certainty %></div>
+        <div class="col"><%= city.year %></div>
+        <div class="col"><%= city.population %></div>
+        <div class="col"><%= city.cityId %></div>
+        <div class="col"><%= link_to 'Show', city %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+</div>
 
 <%= will_paginate @posts %>

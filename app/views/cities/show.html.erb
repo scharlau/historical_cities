@@ -5,50 +5,56 @@
    
 <p id="notice"><%= notice %></p>
 <p><%= link_to 'Back', cities_path %></p>
-<p>
+<div class = "container">
+<div class="row">
+<div class ="col">
   <strong>Name:</strong>
   <%= @city.name %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Othername:</strong>
   <%= @city.otherName %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Country:</strong>
   <%= @city.country %>
-</p>
-
-<p>
+</div>
+</div>
+<div class="row">
+<div class ="col">
   <strong>Latitude:</strong>
   <%= @city.latitude %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Longitude:</strong>
   <%= @city.longitude %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Certainty:</strong>
   <%= @city.certainty %>
-</p>
-
-<p>
+</div>
+</div>
+<div class="row">
+<div class ="col">
   <strong>Year:</strong>
   <%= @city.year %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Population:</strong>
   <%= @city.population %>
-</p>
+</div>
 
-<p>
+<div class ="col">
   <strong>Cityid:</strong>
   <%= @city.cityId %>
-</p>
+  </div>
+  </div>
+</div>
 
 <div id="mapid"></div>
 <script type = "text/javascript">
@@ -60,8 +66,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1Ijoic2NoYXJsYXUiLCJhIjoiY2szYnVuOWxnMDl4bDNmdWlhNGxtdHFwNCJ9.AscLdeuE02X-3W7Mtvos8A '
 }).addTo(mymap);
 var marker = L.marker([<%= @city.latitude %>, <%= @city.longitude %>]).addTo(mymap);
-
-
 
 </script>
 

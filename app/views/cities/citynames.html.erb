@@ -1,25 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cities by Name</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-   
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-<tbody>
+<div class="container">
     <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= link_to 'Show', search_path(term: city.name) %></td>
-      </tr>
+    
+      <div class="row <%= cycle('list-group-item-light', 'list-group-item-info') %>" >
+        <div class="col"><%= city.name %></div>
+        <div class="col"><%= link_to 'Show', search_path(term: city.name) %></div>
+      </div>
     <% end %>
   </tbody>
-</table>
-
-<br>
+</div>
 
 <%= will_paginate @posts %>

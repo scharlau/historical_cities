@@ -1,12 +1,12 @@
 <div class="jumbotron">
-  <h1 class="display-4">Historic Cities</h1>
-  <p class="lead">Look at city populations through the ages. The code is on <%= link_to 'GitHub', 'https://github.com/scharlau/historical_cities'%> </p>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to 'Home', cities_path(),  class: "navbar-brand" %>
+  <h1 align="center" class="display-4">Historic Cities</h1>
+  <p align="center" class="lead">Look at city populations through the ages. The code is on <%= link_to 'GitHub', 'https://github.com/scharlau/historical_cities'%> </p>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+  <%= link_to 'Home', cities_path(), class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div> 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <%= link_to 'Countries', controller: "cities", action: "countries", class: "nav-item nav-link" %> |  
