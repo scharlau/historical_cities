@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
   # GET /cities
   # GET /cities.json
   def index
-    @cities = City.paginate(page: params[:page])
+    @cities = City.year.paginate(page: params[:page])
   end
 
   #organise the city list by country
@@ -14,8 +14,14 @@ class CitiesController < ApplicationController
 
   def citylist
     @cities = City.citylist
-   
-    
+  end
+
+  def citynames
+    @cities = City.names.paginate(page: params[:page])
+  end
+
+  def search
+    @cities = City.search(params[:term]).paginate(page: params[:page])
   end
 
   # GET /cities/1

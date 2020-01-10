@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :cities
   get 'countries', to: 'cities#countries'
   get 'citylist', to: 'cities#citylist'
+  get 'citynames', to: 'cities#citynames'
+  get 'search', to: 'cities#search'
   #get '/barchartcities', to: static('barchartcities.json')
 # set the root to the main page - later we can add something else
   root to: 'cities#index'

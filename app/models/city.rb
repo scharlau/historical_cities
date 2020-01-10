@@ -7,8 +7,16 @@ class City < ApplicationRecord
         end
     end
 
+    def self.year
+      all.order(:year)
+    end
+
     def self.countries
-        City.order(:country)
+        all.order(:country)
+    end
+
+    def self.names
+      all.select(:name).distinct.order(:name)
     end
 
     def self.citylist

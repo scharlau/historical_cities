@@ -64,8 +64,16 @@ Use [Bar chart race](https://github.com/vicrazumov/bar-chart-race) as first atte
     * Follow these instructions to [activate apache2 server on your Mac](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps) so that you can run a server to test the pages without Rails to see that everything works as it should. It did, with minor change to remove '/' from fetch command for JSON then worked in both Safari and Chrome after caches were cleared.
     * Knowing it works, means we can now work on details of doing this with Rails and Ruby.
 
-# Version 1 - The One Table Version
-Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city.
+## Version 1 - The One Table Version - No Styling - Branch Basic
+Everything goes into one table, which we can manipulate to show us interesting visualisations and details about each city. Bootstrap is put in place, but not used. This is the basic branch with no styling added.
+
+## Version 2 - One Table with Styling
+We start to use Bootstrap to clean up the look and feel of the application. These are the basic links to explore for doing this:
+https://getbootstrap.com/docs/4.3/getting-started/introduction/ which is the bootstrap documentation to explain its logic and inner workings.
+https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/ looks like it will help cover the different issues.
+https://www.w3schools.com/bootstrap4/default.asp looks to be similar to the one above, but provides an alterative.
+
+The goal is to have a responsive application, which removes tables where possible, and maintains a high contrast layout, which will be adaptable as we move forward with this project.
 
 
 
