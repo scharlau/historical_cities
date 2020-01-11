@@ -78,5 +78,6 @@ The goal is to have a responsive application, which removes tables where possibl
 1. Fix banner and navigation with edits to app/view/layouts/_menu.html.erb to use bootstrap. 
 2. Makes changes to table layouts with edits to the files under app/view/cities. Using 'cycle' tag in Rails enables alternate colours on rows, and tables are swapped for grid components of rows and colums.
 
-
+## Now we add tests
+This is an experiment, trial and error, in order to learn Rails 6 and how these other components fit together. It's more of a hack as it were. Now that most of the pieces are in place it is the right time to add tests so that we can safely refactor components and know that everything still works fine because the tests pass.
 
