@@ -78,6 +78,19 @@ The goal is to have a responsive application, which removes tables where possibl
 1. Fix banner and navigation with edits to app/view/layouts/_menu.html.erb to use bootstrap. 
 2. Makes changes to table layouts with edits to the files under app/view/cities. Using 'cycle' tag in Rails enables alternate colours on rows, and tables are swapped for grid components of rows and colums.
 
-## Now we add tests
+## Version 3 - The Tests Arrive
 This is an experiment, trial and error, in order to learn Rails 6 and how these other components fit together. It's more of a hack as it were. Now that most of the pieces are in place it is the right time to add tests so that we can safely refactor components and know that everything still works fine because the tests pass. With tests in place, we can refactor the app knowing that we keep functionality working.
 
+I'm starting with tests following the approach of Avdi Grimm set out in https://avdi.codes/rails-6-system-tests-from-top-to-bottom/ as this follows a system approach ;using the built-in testing of Rails. We can also find more details at https://guides.rubyonrails.org/testing.html 
+
+The first step is to set up the test database so that we don't mess up the development database by accident. This means modifying the config/database.yml file to point to our postgresql test database. Then we can run the command
+
+    rails db:test:prepare
+
+Which will run our migrations to set up the tables. We can load them by running our specific rake task from the setup method of the test file.
+
+We run the tests with the command 
+
+    rails test:system
+
+So far so good. Now we can add more tests.
