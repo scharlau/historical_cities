@@ -87,10 +87,12 @@ The first step is to set up the test database so that we don't mess up the devel
 
     rails db:test:prepare
 
-Which will run our migrations to set up the tables. We can load them by running our specific rake task from the setup method of the test file.
+Which will run our migrations to set up the tables. We can load them by running our specific rake task from the setup method of the cities_test.rb file.
 
 We run the tests with the command 
 
     rails test:system
 
-So far so good. Now we can add more tests. The citynames.html.erb file needed to be modified to make the 'show' link 'show cityname' to make each 'show' link unique. Similarly, on the 'show' page an 'h1' element was added to display the city name so that a test could be run to confirm the correct data was being displayed.
+So far so good. Now we can add more tests using Rails built-in tests plus add Capybara to handle the page content assertions. 
+
+The citynames.html.erb file needed to be modified to make the 'show' link 'show cityname' to make each 'show' link unique. Similarly, on the 'show' page an 'h1' element was added to display the city name so that a test could be run to confirm the correct data was being displayed.
