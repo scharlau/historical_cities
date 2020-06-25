@@ -5,6 +5,7 @@
    
 <p id="notice"><%= notice %></p>
 <p><%= link_to 'Back', cities_path %></p>
+<h1 align="center" ><%= @city.name %></h1>
 <div class = "container">
 <div class="row">
 <div class ="col">
@@ -55,7 +56,7 @@
   </div>
   </div>
 </div>
-
+<br>
 <div id="mapid"></div>
 <script type = "text/javascript">
 var mymap = L.map('mapid').setView([<%= @city.latitude %>, <%= @city.longitude %>], 13);
@@ -102,5 +103,5 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 
-<h3>These are all of the details about the city over the years:</h3>
+<h3>These are all of the details about the city of <%=@city.name %> over the years:</h3>
  <%= render "core" %>

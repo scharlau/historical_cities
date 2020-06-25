@@ -6,7 +6,7 @@
     
       <div class="row <%= cycle('list-group-item-light', 'list-group-item-info') %>" >
         <div class="col"><%= city.name %></div>
-        <div class="col"><%= link_to 'Show', search_path(term: city.name) %></div>
+        <div class="col"><%= link_to "Show #{city.name}", search_path(term: city.name) %></div>
       </div>
     <% end %>
   </tbody>

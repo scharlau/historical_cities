@@ -93,4 +93,4 @@ We run the tests with the command
 
     rails test:system
 
-So far so good. Now we can add more tests.
+So far so good. Now we can add more tests. The citynames.html.erb file needed to be modified to make the 'show' link 'show cityname' to make each 'show' link unique. Similarly, on the 'show' page an 'h1' element was added to display the city name so that a test could be run to confirm the correct data was being displayed.
