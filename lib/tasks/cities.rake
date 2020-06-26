@@ -1,5 +1,28 @@
 require 'creek'
 namespace :cities do
+
+  desc "parse countries"
+  task seed_countries: :environment do
+
+    #destroy the old table data before importing the new one
+    Country.destroy_all
+
+    workbook = Creek::Book.new 'lib/assets/urbanspatial-hist-urban-pop-3700bc-ad2000.xlsx'
+    sheet = workbook.sheets[3]
+
+    #create model instances with the data
+    sheet.simple_rows.each do |row|
+      puts row 
+      # need to extract values from row to populate instance - puts statement was to test this
+      row_cells = row.values
+      #puts "row cells: " + row_cells.to_s
+      Country.create!(
+      name: row_cells[0]
+      )
+    end
+
+  end
+
   desc "parse cities to database as one table"
   task seed_basic_cities: :environment do
 
@@ -8,17 +31,24 @@ namespace :cities do
 
     workbook = Creek::Book.new 'lib/assets/urbanspatial-hist-urban-pop-3700bc-ad2000.xlsx'
     sheet = workbook.sheets[2]
-
+  
     #create model instances with the data
     sheet.simple_rows.each do |row|
       puts row 
+
       # need to extract values from row to populate instance - puts statement was to test this
       row_cells = row.values
+
+      #look up country_id
+      country = Country.where('countries.name Like ?', row_cells[3]).first
+      temp_id = country.id
+      # puts "temp_id: " + temp_id.to_s
+
       #puts "row cells: " + row_cells.to_s
       City.create!(
       name: row_cells[1],
       otherName: row_cells[2],
-      country: row_cells[3],
+      country_id: temp_id,
       latitude: row_cells[4],
       longitude: row_cells[5],
       certainty: row_cells[6],

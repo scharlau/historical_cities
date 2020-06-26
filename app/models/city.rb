@@ -1,14 +1,30 @@
 class City < ApplicationRecord
-    def self.search(term)
+  has_one :country  
+  
+  def self.baseCity
+    @cities = City.all
+    @cities.each do |city|
+      country = Country.find(city.country_id)
+      city.countryName = country.name.to_s
+    end
+  end
+
+  def self.search(term)
         if term
           where('cities.name LIKE ?', "%#{term}%").order(:year)
         else
-          all
+          baseCity
         end
     end
 
     def self.year
-      all.order(:year)
+      @cities = all.order(:year)
+      @cities.each do |city|
+        country = Country.find(city.country_id)
+        city.countryName = country.name.to_s
+      end
+      return @cities
+
     end
 
     def self.countries

@@ -96,3 +96,6 @@ We run the tests with the command
 So far so good. Now we can add more tests using Rails built-in tests plus add Capybara to handle the page content assertions. 
 
 The citynames.html.erb file needed to be modified to make the 'show' link 'show cityname' to make each 'show' link unique. Similarly, on the 'show' page an 'h1' element was added to display the city name so that a test could be run to confirm the correct data was being displayed.
+
+### Version 4 - Using Linked Tables
+
