@@ -35,7 +35,6 @@ namespace :cities do
     #create model instances with the data
     sheet.simple_rows.each do |row|
       puts row 
-
       # need to extract values from row to populate instance - puts statement was to test this
       row_cells = row.values
 
@@ -43,7 +42,42 @@ namespace :cities do
       country = Country.where('countries.name Like ?', row_cells[3]).first
       temp_id = country.id
       # puts "temp_id: " + temp_id.to_s
+      #puts "row cells: " + row_cells.to_s
+      City.create!(
+      name: row_cells[1],
+      otherName: row_cells[2],
+      country_id: temp_id,
+      latitude: row_cells[4],
+      longitude: row_cells[5],
+      certainty: row_cells[6],
+      year: row_cells[7],
+      population: row_cells[8],
+      cityId: row_cells[9]
+      )
+      
+    end
 
+  end
+
+  desc "parse cities to small test selection"
+  task seed_test: :environment do
+
+    #destroy the old table data before importing the new one
+    City.destroy_all
+
+    workbook = Creek::Book.new 'lib/assets/urbanspatial-test.xlsx'
+    sheet = workbook.sheets[2]
+  
+    #create model instances with the data
+    sheet.simple_rows.each do |row|
+      puts row 
+      # need to extract values from row to populate instance - puts statement was to test this
+      row_cells = row.values
+
+      #look up country_id
+      country = Country.where('countries.name Like ?', row_cells[3]).first
+      temp_id = country.id
+      # puts "temp_id: " + temp_id.to_s
       #puts "row cells: " + row_cells.to_s
       City.create!(
       name: row_cells[1],

@@ -34,9 +34,7 @@ class CitiesController < ApplicationController
     @cities.each do |city|
       @years << city.year
       @population << city.population
-
     end
-    @cities.paginate(page: params[:page])
   end
 
   # GET /cities/new
@@ -96,6 +94,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name, :otherName, :country, :latitude, :longitude, :certainty, :year, :population, :cityId)
+      params.require(:city).permit(:name, :otherName, :countryName, :latitude, :longitude, :certainty, :year, :population, :cityId, :country_id)
     end
 end

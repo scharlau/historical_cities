@@ -4,8 +4,10 @@ require 'rake'
 class CitiesTest < ApplicationSystemTestCase
   setup do
    # assign variable to the task, then invoke it
-   task = Rake::Task['cities:seed_heroku']
-   task.invoke
+   country_task = Rake::Task['cities:seed_countries']
+   city_task = Rake::Task['cities:seed_test']
+   country_task.invoke
+   city_task.invoke
   end
 
 # removing 'creating a city', and 
@@ -25,7 +27,7 @@ class CitiesTest < ApplicationSystemTestCase
 
     click_on 'Countries'
     assert_selector "h1", text: "Cities ordered by Country" 
-    assert page.has_content?('Kabul_34.5_69.2')  
+    assert page.has_content?('Baghdad_33.3_44.4')  
 
     click_on 'City Names'
     assert_selector "h1", text: "Cities by Name"  
@@ -33,7 +35,7 @@ class CitiesTest < ApplicationSystemTestCase
     click_on 'Show Aachen'
     assert_selector "h1", text: "City Search Result"  
 
-    click_on 'Show 1900'
+    click_on 'Show 1600'
     assert_selector "h1", text: "Aachen"  
     assert page.has_content?('Aix-la-Chapelle')
 
