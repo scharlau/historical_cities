@@ -97,7 +97,7 @@ So far so good. Now we can add more tests using Rails built-in tests plus add Ca
 
 The citynames.html.erb file needed to be modified to make the 'show' link 'show cityname' to make each 'show' link unique. Similarly, on the 'show' page an 'h1' element was added to display the city name so that a test could be run to confirm the correct data was being displayed.
 
-### Version 4 - Using Linked Tables
+### Version 4 - Using Two Linked Tables
 This is interesting. This forces some changes on how queries are created, and removes some ease as duplication is removed. Now the list on 'countries' page is harder to do, as countries are ordered by country.id, and not alphabetical name. A better version would probably alphabetise the country order, and then look up each of those cities so that you only had one page of cities for each country. This would be a bigger functional change.
 
 The addition of the Country Name back to the page is complicated by another look-up for each item being added to the city model. This is required as, while each city has_one country, the relationship is only one-way so we need to do the lookup manually for something like city.countryName by creating the method. That's 10k queries, which we didn't have before when we list the items.
@@ -105,3 +105,6 @@ The addition of the Country Name back to the page is complicated by another look
 This new table also meant changes in the rake to seed the countries, and to match each city to the correct country_id with a look-up for each entry.
 
 The tests were modified as the country list is no longer alphabetical, but numerical, so Kabul is out, and Baghdad is in. Similarly, the reduced test data set, which saves about 30seconds each run, meant a change in the year available for Aachen.
+
+### Version 5 - Three Linked Tables
+Adding a table of city names would be the next step in this exercise. This would hold city name, country (there are a few cities with the same name in different countries), its lat and long, plus its cityid, which is a combo of lat/long. This would then be used to remove duplicate data. That is for another time.
