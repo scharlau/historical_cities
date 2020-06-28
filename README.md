@@ -106,5 +106,5 @@ This new table also meant changes in the rake to seed the countries, and to matc
 
 The tests were modified as the country list is no longer alphabetical, but numerical, so Kabul is out, and Baghdad is in. Similarly, the reduced test data set, which saves about 30seconds each run, meant a change in the year available for Aachen.
 
-### Version 5 - Three Linked Tables
-Adding a table of city names would be the next step in this exercise. This would hold city name, country (there are a few cities with the same name in different countries), its lat and long, plus its cityid, which is a combo of lat/long. This would then be used to remove duplicate data. That is for another time.
+### Version 5 - The Future with Three Linked Tables
+Adding a table of city names would be the next step in this exercise. This would hold city name, country (there are a few cities with the same name in different countries), its lat and long, plus its cityid, which is a combo of lat/long. This would then be used to remove duplicate data. That is for another time. So too, would be adding a search field to find specific cities.
